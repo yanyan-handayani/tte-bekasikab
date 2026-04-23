@@ -9,3 +9,4 @@ staticfiles/
 .vscode/
 backend/tte.sql*
 frontend/node_modules/
+backend/catatan.txt

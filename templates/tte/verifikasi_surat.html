@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Verifikasi Surat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 16px;
+            background: #fafafa;
+        }
+
+        .card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .row {
+            display: flex;
+            gap: 14px;
+            padding: 6px 0;
+            flex-wrap: wrap;
+        }
+
+        .k {
+            width: 170px;
+            color: #666;
+        }
+
+        .v {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        a.btn {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 1px solid #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Verifikasi Dokumen TTE</h2>
+
+        <div class="row">
+            <div class="k">ID Surat</div>
+            <div class="v">{{ surat.id_surat }}</div>
+        </div>
+        <div class="row">
+            <div class="k">Nomor</div>
+            <div class="v">{{ surat.nomor_surat|default:"-" }}</div>
+        </div>
+        <div class="row">
+            <div class="k">Judul</div>
+            <div class="v">{{ surat.judul_surat|default:"-" }}</div>
+        </div>
+        <div class="row">
+            <div class="k">Tujuan</div>
+            <div class="v">{{ surat.tujuan_surat|default:"-" }}</div>
+        </div>
+        <div class="row">
+            <div class="k">Token</div>
+            <div class="v">{{ token }}</div>
+        </div>
+        <h3>Penandatangan</h3>
+
+        {% if penandatangan_list %}
+        <div style="overflow:auto;">
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:8px;">Nama</th>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:8px;">Jabatan</th>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:8px;">Tanggal TTD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in penandatangan_list %}
+                    <tr>
+                        <td style="padding:8px; border-bottom:1px solid #f0f0f0;">
+                            {{ t.pejabat|default:"-" }}
+                        </td>
+                        <td style="padding:8px; border-bottom:1px solid #f0f0f0;">
+                            {{ t.pejabat_jabatan|default:"-" }}
+                        </td>
+                        <td style="padding:8px; border-bottom:1px solid #f0f0f0;">
+                            {{ t.sign_date|date:"d-m-Y H:i" }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>- Tidak ada penandatangan -</p>
+        {% endif %}
+        <hr>
+        <p>
+            <a class="btn" href="{% url 'tte_verifikasi_pdf' token=token %}" target="_blank">Lihat PDF</a>
+        </p>
+    </div>
+</body>
+
+</html>

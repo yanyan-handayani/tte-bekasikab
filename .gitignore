@@ -9,3 +9,4 @@ staticfiles/
 .idea/
 .vscode/
 tte.sql*
+node_modules/

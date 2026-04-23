@@ -1,4 +1,4 @@
-# TTE Django Backend (mapping awal)
+# TTE Django Backend Vue JS Frontend
 
 Project Django ini fokus untuk **mapping DDL legacy** supaya:
 - Model kebaca di Django ORM

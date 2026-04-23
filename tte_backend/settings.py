@@ -171,19 +171,19 @@ STATIC_ROOT = os.getenv("STATIC_ROOT", "staticfiles")
 
 PDP_ENC_KEY = os.getenv("PDP_ENC_KEY", "dev-enc-key-change-me")
 ESIGN = {
-    "URL" : os.getenv("ESIGN_URL", "http://10.5.58.79/api/sign/pdf"),
-    "USERNAME": os.getenv("ESIGN_USERNAME", "satte"),
-    "PASSWORD": os.getenv("ESIGN_PASSWORD", "@Bekasikab19")
+    "URL" : os.getenv("ESIGN_URL", "https://[IP_ADDRESS]/api/sign/pdf"),
+    "USERNAME": os.getenv("ESIGN_USERNAME", ""),
+    "PASSWORD": os.getenv("ESIGN_PASSWORD", "")
 }
 
 FRONTEND_URL = os.getenv("FRONTEND_URL", "https://tte.bekasikab.go.id")
-DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "tte@bekasikab.go.id")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "[EMAIL_ADDRESS]")
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.getenv("EMAIL_HOST", "mail.bekasikab.go.id")
+EMAIL_HOST = os.getenv("EMAIL_HOST", "[IP_ADDRESS]")
 EMAIL_PORT = os.getenv("EMAIL_PORT", 587)
-EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", True)
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "tte@bekasikab.go.id")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False)
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 
 DEFAULT_RESET_EMAIL_DOMAIN = os.getenv("DEFAULT_RESET_EMAIL_DOMAIN", "bekasikab.go.id")

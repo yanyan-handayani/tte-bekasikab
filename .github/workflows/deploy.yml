@@ -1,0 +1,29 @@
+name: Deploy Staging TTE
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Staging
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            set -e
+            if [ ! -f /opt/tte/scripts/staging.sh ]; then
+              sudo mkdir -p /opt/tte
+              sudo chown -R $USER:$USER /opt/tte
+              if [ -d /opt/tte/.git ]; then
+                git -C /opt/tte pull --ff-only
+              else
+                git clone git@github.com:yanyan-handayani/tte_django_backend.git /opt/tte
+              fi
+            fi
+            bash /opt/tte/scripts/staging.sh

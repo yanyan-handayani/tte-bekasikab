@@ -1,6 +1,4 @@
-venv/
-__pycache__/
-*.pyc
+backend/venv
 backend/.env
 media/
 staticfiles/
@@ -10,14 +8,3 @@ staticfiles/
 backend/tte.sql*
 frontend/node_modules/
 backend/catatan.txt
-coverage
-*.log*
-.nuxt
-.nitro
-.cache
-.output
-.DS_Store
-.idea
-.eslintcache
-api-generator/typedoc.json
-**/.DS_Store

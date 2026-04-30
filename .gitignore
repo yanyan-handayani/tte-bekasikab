@@ -1,6 +1,4 @@
-venv/
-__pycache__/
-*.pyc
+backend/venv
 backend/.env
 media/
 staticfiles/
@@ -9,3 +7,4 @@ staticfiles/
 .vscode/
 backend/tte.sql*
 frontend/node_modules/
+backend/catatan.txt
